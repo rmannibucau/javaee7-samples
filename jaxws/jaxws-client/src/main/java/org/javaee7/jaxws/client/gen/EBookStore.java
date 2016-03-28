@@ -28,13 +28,13 @@ public interface EBookStore {
      * 
      * @param arg0
      * @return
-     *     returns java.lang.String
+     *     returns org.javaee7.jaxws.client.gen.EBook
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "welcomeMessage", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.WelcomeMessage")
-    @ResponseWrapper(localName = "welcomeMessageResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.WelcomeMessageResponse")
-    public String welcomeMessage(
+    @RequestWrapper(localName = "takeBook", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.TakeBook")
+    @ResponseWrapper(localName = "takeBookResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.TakeBookResponse")
+    public EBook takeBook(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
@@ -56,26 +56,15 @@ public interface EBookStore {
      * 
      * @param arg0
      * @return
-     *     returns org.javaee7.jaxws.client.gen.EBook
+     *     returns java.lang.String
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "takeBook", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.TakeBook")
-    @ResponseWrapper(localName = "takeBookResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.TakeBookResponse")
-    public EBook takeBook(
+    @RequestWrapper(localName = "welcomeMessage", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.WelcomeMessage")
+    @ResponseWrapper(localName = "welcomeMessageResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.WelcomeMessageResponse")
+    public String welcomeMessage(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "saveBook", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.SaveBook")
-    @ResponseWrapper(localName = "saveBookResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.SaveBookResponse")
-    public void saveBook(
-        @WebParam(name = "arg0", targetNamespace = "")
-        EBook arg0);
 
     /**
      * 
@@ -93,5 +82,16 @@ public interface EBookStore {
         EBook arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         int arg1);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "saveBook", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.SaveBook")
+    @ResponseWrapper(localName = "saveBookResponse", targetNamespace = "http://endpoint.jaxws.javaee7.org/", className = "org.javaee7.jaxws.client.gen.SaveBookResponse")
+    public void saveBook(
+        @WebParam(name = "arg0", targetNamespace = "")
+        EBook arg0);
 
 }

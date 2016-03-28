@@ -1,0 +1,3 @@
+<resources>
+  <Resource id="global/ExampleDS" type="DataSource" />
+</resources>

@@ -21,6 +21,37 @@
 
   <xs:element name="welcomeMessageResponse" type="tns:welcomeMessageResponse"/>
 
+  <xs:complexType name="takeBook">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="takeBookResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:eBook" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eBook">
+    <xs:sequence>
+      <xs:element name="notes" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="numPages" type="xs:int"/>
+      <xs:element name="price" type="xs:double"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveBook">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:eBook" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveBookResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
   <xs:complexType name="findEBooks">
     <xs:sequence>
       <xs:element name="arg0" type="xs:string" minOccurs="0"/>
@@ -45,25 +76,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="saveBook">
-    <xs:sequence>
-      <xs:element name="arg0" type="tns:eBook" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="eBook">
-    <xs:sequence>
-      <xs:element name="notes" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="numPages" type="xs:int"/>
-      <xs:element name="price" type="xs:double"/>
-      <xs:element name="title" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="saveBookResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
   <xs:complexType name="addAppendix">
     <xs:sequence>
       <xs:element name="arg0" type="tns:eBook" minOccurs="0"/>
@@ -72,18 +84,6 @@
   </xs:complexType>
 
   <xs:complexType name="addAppendixResponse">
-    <xs:sequence>
-      <xs:element name="return" type="tns:eBook" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="takeBook">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="takeBookResponse">
     <xs:sequence>
       <xs:element name="return" type="tns:eBook" minOccurs="0"/>
     </xs:sequence>
