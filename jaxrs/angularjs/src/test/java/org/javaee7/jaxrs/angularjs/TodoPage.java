@@ -1,5 +1,6 @@
 package org.javaee7.jaxrs.angularjs;
 
+import org.jboss.arquillian.graphene.angular.findby.FindByNg;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,19 +10,19 @@ import java.util.List;
 @Location("")
 public class TodoPage {
 
-    @FindBy(css = "#add-note")
+    @FindByNg(action = "addNote()")
     private WebElement addNote;
 
-    @FindBy(css = "#edit-note-form .btn-primary")
+    @FindByNg(action = "save()")
     private WebElement save;
 
-    @FindBy(css = "#edit-note-form textarea")
+    @FindByNg(model = "selectedNote.summary")
     private WebElement summaryInput;
 
-    @FindBy(css = "#edit-note-form input")
+    @FindByNg(model = "selectedNote.title")
     private WebElement tileInput;
 
-    @FindBy(css = "#notes .note")
+    @FindByNg(repeat= "note in notes")
     private List<NoteItem> todos;
 
     public List<NoteItem> getTodos()
@@ -36,21 +37,26 @@ public class TodoPage {
 
     public void save()
     {
-        save.click();
+        save.submit();
     }
 
     public void typeSummary(String text)
     {
+        summaryInput.clear();
         summaryInput.sendKeys(text);
     }
 
     public void typeTitle(String text)
     {
+        tileInput.clear();
         tileInput.sendKeys(text);
     }
 
-    public static class NoteItem {
+    public boolean modalIsShown() {
+        return tileInput.isDisplayed() && summaryInput.isDisplayed();
+    }
 
+    public static class NoteItem {
         @FindBy(className = "btn-danger")
         private WebElement removeButton;
 

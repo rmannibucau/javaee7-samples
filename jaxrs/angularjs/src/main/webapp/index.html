@@ -3,10 +3,26 @@
 <head>
     <title>AngularJS on JAX-RS</title>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
-</head>
-<body ng-app="TodoApp" ng-controller="TodoCtrl">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+        }
 
-<section id="notes" class="container">
+        .popup {
+            z-index: 2;
+            position: absolute;
+            min-width: 200px;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body id="ng-app" class="ng-app: TodoApp;" ng-controller="TodoCtrl">
+
+<section id="notes" class="container ng-cloak">
     <button id="add-note" class="btn btn-primary" ng-click="addNote()">Add note</button>
     <article ng-repeat="note in notes" class="note">
         <h1><span class="title">{{ note.title }}</span>
@@ -17,7 +33,7 @@
     </article>
 </section>
 
-<div id="edit-note-modal" class="modal fade" tabindex="-1" role="dialog" ng-class="{'in show':isEditNoteMode()}">
+<div id="edit-note-modal" class="ng-cloak popup" ng-show="isEditNoteMode()">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -28,7 +44,7 @@
                     <input type="text" ng-model="selectedNote.title" placeholder="Title" class="form-control" required/>
                     <textarea ng-model="selectedNote.summary" placeholder="Summary" class="form-control" required></textarea>
                     <button class="btn btn-primary" type="submit">Save</button>
-                    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-default" ng-click="cancel($event);">Cancel</button>
                 </form>
             </div>
         </div>

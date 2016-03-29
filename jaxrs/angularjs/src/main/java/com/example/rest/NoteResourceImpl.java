@@ -17,7 +17,7 @@ public class NoteResourceImpl implements NoteResource {
     @Override
     public List<Note> getNotes()
     {
-        return entityManager.createQuery("from Note order by id", Note.class).getResultList();
+        return entityManager.createQuery("select n from Note n order by n.id", Note.class).getResultList();
     }
 
     @Override

@@ -8,7 +8,7 @@ if (undefined != mocks.initializeMocks) {
     app.run(mocks.initializeMocks);
 }
 
-app.controller("TodoCtrl", function ($scope, NoteDAO)
+app.controller("TodoCtrl", ['$scope', 'NoteDAO', function ($scope, NoteDAO)
 {
     var EDIT_MODE = "edit";
     var mode;
@@ -32,9 +32,10 @@ app.controller("TodoCtrl", function ($scope, NoteDAO)
         mode = EDIT_MODE;
     };
 
-    $scope.cancel = function ()
+    $scope.cancel = function (e)
     {
         mode = undefined;
+        e.preventDefault();
     };
 
     $scope.save = function ()
@@ -49,9 +50,9 @@ app.controller("TodoCtrl", function ($scope, NoteDAO)
     };
 
     refresh();
-});
+}]);
 
-app.factory("NoteDAO", function ($resource)
+app.factory("NoteDAO", ['$resource', function ($resource)
 {
     return $resource(window.applicationContextPath + "/rest/note/:id", {id: "@id"});
-});
+}]);

@@ -788,6 +788,8 @@
                             <systemPropertyVariables>
                                 <!--
                                 TomEE Remote Arquillian Adapter Configuration
+
+                                Note: multiline properties can create some issues with IntelliJ launcher :(
                                 -->
 
                                 <!-- using random port to run in // tests -->
